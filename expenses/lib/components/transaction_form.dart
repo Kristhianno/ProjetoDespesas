@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatefulWidget {
-  
   final void Function(String, double) onSubmit;
 
-  const TransactionForm(this.onSubmit) ;
+  const TransactionForm(this.onSubmit);
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
@@ -37,23 +36,43 @@ class _TransactionFormState extends State<TransactionForm> {
             TextField(
               controller: titleController,
               onSubmitted: (_) => _submitForm(),
-              decoration:const InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Título',
               ),
             ),
             TextField(
               controller: valueController,
-              keyboardType:const TextInputType.numberWithOptions(decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (_) => _submitForm(),
-              decoration:const InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Valor (R\$)',
               ),
             ),
-            TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
-              onPressed: _submitForm,
-              child:const Text('Nova Transação'),
+            Container(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  const Text('Nenhuma data selecionada!'),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Selecionar Data',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
+              ElevatedButton(
+                style: TextButton.styleFrom(foregroundColor: Colors.white),
+                onPressed: _submitForm,
+                child: const Text('Nova Transação'),
+              ),
+            ]),
           ],
         ),
       ),
