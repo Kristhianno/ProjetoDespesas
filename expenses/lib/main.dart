@@ -22,14 +22,14 @@ class ExpensesApp extends StatelessWidget {
             secondary: Colors.blue,
           ),
           textTheme: tema.textTheme.copyWith(
-            titleLarge:const TextStyle(
+            titleLarge: const TextStyle(
               fontFamily: 'OpenSans',
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
           ),
-          appBarTheme:const AppBarTheme(
+          appBarTheme: const AppBarTheme(
               titleTextStyle: TextStyle(
             fontFamily: 'Quicksand',
             fontSize: 20,
