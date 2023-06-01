@@ -50,7 +50,7 @@ class _TransactionFormState extends State<TransactionForm> {
               ),
             ),
             TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.green),
+              style: TextButton.styleFrom(foregroundColor: Colors.red),
               onPressed: _submitForm,
               child:const Text('Nova Transação'),
             ),
