@@ -4,21 +4,21 @@ import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
-  TransactionList(this.transactions);
+  const TransactionList(this.transactions);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 500,
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
-                Text(
+                const Text(
                   'Nenhuma Transação Cadastrada!',
                   style: TextStyle(fontSize: 20, fontFamily: 'OpenSans'),
                 ),
-                SizedBox(height: 70),
-                Container(
+                const SizedBox(height: 70),
+                SizedBox(
                   height: 400,
                   child: Image.asset(
                     'assets/images/sid.png',
@@ -35,20 +35,20 @@ class TransactionList extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Container(
-                        margin:
+                        margin:const
                             EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         decoration: BoxDecoration(
                             border: Border.all(
-                          color: Colors.purple,
+                          color: Colors.blue,
                           width: 2,
                         )),
-                        padding: EdgeInsets.all(10),
+                        padding:const EdgeInsets.all(10),
                         child: Text(
                           'R\$ ${tr.value.toStringAsFixed(2)}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.purple,
+                            color: Colors.blue[700],
                           ),
                         ),
                       ),
@@ -57,15 +57,16 @@ class TransactionList extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             tr.title,
-                            style: TextStyle(
-                              fontSize: 16,
+                            style:const TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
                             DateFormat('d MMM y').format(tr.date),
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: Colors.blue[700],
                             ),
                           ),
                         ],

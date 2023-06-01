@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatefulWidget {
+  
   final void Function(String, double) onSubmit;
 
-  TransactionForm(this.onSubmit);
+  const TransactionForm(this.onSubmit) ;
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
@@ -36,22 +37,22 @@ class _TransactionFormState extends State<TransactionForm> {
             TextField(
               controller: titleController,
               onSubmitted: (_) => _submitForm(),
-              decoration: InputDecoration(
+              decoration:const InputDecoration(
                 labelText: 'Título',
               ),
             ),
             TextField(
               controller: valueController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              keyboardType:const TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (_) => _submitForm(),
-              decoration: InputDecoration(
+              decoration:const InputDecoration(
                 labelText: 'Valor (R\$)',
               ),
             ),
             TextButton(
-              child: Text('Nova Transação'),
-              style: TextButton.styleFrom(foregroundColor: Colors.purple),
+              style: TextButton.styleFrom(foregroundColor: Colors.green),
               onPressed: _submitForm,
+              child:const Text('Nova Transação'),
             ),
           ],
         ),

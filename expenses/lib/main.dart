@@ -18,18 +18,18 @@ class ExpensesApp extends StatelessWidget {
       home: MyHomePage(),
       theme: tema.copyWith(
           colorScheme: tema.colorScheme.copyWith(
-            primary: Colors.purple,
-            secondary: Colors.green,
+            primary: Colors.green[700],
+            secondary: Colors.blue,
           ),
           textTheme: tema.textTheme.copyWith(
-            titleLarge: TextStyle(
+            titleLarge:const TextStyle(
               fontFamily: 'OpenSans',
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
           ),
-          appBarTheme: AppBarTheme(
+          appBarTheme:const AppBarTheme(
               titleTextStyle: TextStyle(
             fontFamily: 'Quicksand',
             fontSize: 20,
@@ -45,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List <Transaction>_transactions = [
+  final List<Transaction> _transactions = [
     // Transaction(
     //   id: 't1',
     //   title: 'Novo Tênis de Corrida',
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
-  _opoenTransactionFormModal(BuildContext context) {
+  _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
         context: context,
         builder: (_) {
@@ -99,11 +99,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Despesas Pessoais'),
+        title: const Text('Despesas Pessoais'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => _opoenTransactionFormModal(context),
+            icon: const Icon(Icons.add),
+            onPressed: () => _openTransactionFormModal(context),
           )
         ],
       ),
@@ -111,20 +111,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              child: Card(
-                color: Colors.blue,
-                child: Text('Gráfico'),
-                elevation: 5,
-              ),
+            const Card(
+              color: Colors.blue,
+              elevation: 5,
+              child: Text('Gráfico'),
             ),
             TransactionList(_transactions),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _opoenTransactionFormModal(context),
+        child: const Icon(Icons.add),
+        onPressed: () => _openTransactionFormModal(context),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
