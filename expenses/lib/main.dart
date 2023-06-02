@@ -46,86 +46,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo Tênis de Corrida',
-      value: 301.76,
-      date: DateTime.now().subtract(const Duration(days: 3)),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 250.4,
-      date: DateTime.now().subtract(const Duration(days: 4)),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'Conta de Padaria',
-      value: 400.45,
-      date: DateTime.now().subtract(const Duration(days: 1)),
-    ),
-    Transaction(
-      id: 't4',
-      title: 'Compras no Shopping',
-      value: 592.34,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't5',
-      title: 'Faxina',
-      value: 700.34,
-      date: DateTime.now().subtract(const Duration(days: 4)),
-    ),
-    Transaction(
-      id: 't6',
-      title: 'Carro de Passeio',
-      value: 62.00,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't7',
-      title: 'Sogra',
-      value: 93.54,
-      date: DateTime.now().subtract(const Duration(days: 2)),
-    ),
-    Transaction(
-      id: 't8',
-      title: 'Moto',
-      value: 292.34,
-      date: DateTime.now().subtract(const Duration(days: 6)),
-    ),
-    Transaction(
-      id: 't9',
-      title: 'Férias',
-      value: 792.34,
-      date: DateTime.now().subtract(const Duration(days: 5)),
-    ),
-    Transaction(
-      id: 't10',
-      title: 'Compras na Turquia',
-      value: 99.34,
-      date: DateTime.now().subtract(const Duration(days: 3)),
-    ),
-    Transaction(
-      id: 't11',
-      title: 'Despesas Pessoais',
-      value: 59.34,
-      date: DateTime.now().subtract(const Duration(days: 7)),
-    ),
-    Transaction(
-      id: 't12',
-      title: 'Compras no Bar',
-      value: 92.34,
-      date: DateTime.now().subtract(const Duration(days: 9)),
-    ),
-    Transaction(
-      id: 't13',
-      title: 'Viagem de Barco',
-      value: 200.34,
-      date: DateTime.now().subtract(const Duration(days: 10)),
-    ),
-  ];
+  final List<Transaction> _transactions = [];
 
   List<Transaction> get _recentTransactions {
     return _transactions.where((tr) {
@@ -135,12 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
-      date: DateTime.now(),
+      date: date,
     );
 
     setState(() {
@@ -148,6 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     Navigator.of(context).pop();
+  }
+
+// build methodos for remove transaction
+  _removeTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((tr) => tr.id == id);
+    });
   }
 
   _openTransactionFormModal(BuildContext context) {
