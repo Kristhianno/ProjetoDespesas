@@ -100,21 +100,26 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               leading: Icon(Icons.message),
-              title: Text('M E S S A G E'),
+              title: Text('M E N S A G E N S'),
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('S E T T I N G S'),
+              title: Text('C O N F I G U R A Ç Õ E S'),
+            ),
+            ListTile(
+              leading: Icon(Icons.announcement),
+              title: Text('S O B R E'),
             ),
             ListTile(
               leading: Icon(Icons.logout),
-              title: Text('L O G O U T'),
+              title: Text('S A I R'),
             ),
           ],
         ),
       ),
       appBar: AppBar(
-        title: const Text('Despesas Pessoais'),
+        title: const Center(child: Text('Despesas Pessoais'),
+        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),

@@ -18,11 +18,11 @@ class TransactionList extends StatelessWidget {
                   'Nenhuma Transação Cadastrada!',
                   style: TextStyle(fontSize: 20, fontFamily: 'OpenSans'),
                 ),
-                const SizedBox(height: 70),
+                const SizedBox(height: 20),
                 SizedBox(
-                  height: 400,
+                  height: 330,
                   child: Image.asset(
-                    'assets/images/zz.png',
+                    'assets/images/massas.png',
                     fit: BoxFit.cover,
                   ),
                 ),
