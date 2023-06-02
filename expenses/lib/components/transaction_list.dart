@@ -6,6 +6,7 @@ class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final void Function(String) onRemove;
   const TransactionList(this.transactions, this.onRemove);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +16,18 @@ class TransactionList extends StatelessWidget {
               children: <Widget>[
                 SizedBox(height: constraints.maxHeight * 0.05),
                 Container(
-                  height: constraints.maxHeight * 0.3,
-                  child: Text(
+                  height:constraints.maxHeight * 0.3,
+                  child:Text(
                     'Nenhuma Transação Cadastrada!',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 SizedBox(height: constraints.maxHeight * 0.05),
-                Container(
-                  child: SizedBox(
-                    height: constraints.maxHeight * 0.6,
-                    child: Image.asset(
-                      'assets/images/zz.png',
-                      fit: BoxFit.cover,
-                    ),
+                SizedBox(
+                  height: constraints.maxHeight * 0.6,
+                  child: Image.asset(
+                    'assets/images/zz.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],
