@@ -1,6 +1,6 @@
 import 'package:expenses/components/chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart'; // para restringira a orientação do aplicativo portrait or horizontal
 import 'dart:math';
 import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
@@ -13,7 +13,7 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     final ThemeData tema = ThemeData();
 
     return MaterialApp(
@@ -86,6 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
       date: DateTime.now(),
     ),
   ];
+
+  bool _showChart = false;
 
   List<Transaction> get _recentTransactions {
     return _transactions.where((tr) {
@@ -182,12 +184,32 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-                height: availableHeight * 0.30,
-                child: Chart(_recentTransactions)),
-            Container(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Exibir Gráfico',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                ),
+                Switch(
+                  value: _showChart,
+                  onChanged: (value) {
+                    setState(() {
+                      _showChart = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            if (_showChart)
+              Container(
+                  height: availableHeight * 0.30,
+                  child: Chart(_recentTransactions)),
+            if (!_showChart)
+              Container(
                 height: availableHeight * 0.70,
-                child: TransactionList(_transactions, _removeTransaction)),
+                child: TransactionList(_transactions, _removeTransaction),
+              ),
           ],
         ),
       ),
