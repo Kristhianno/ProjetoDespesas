@@ -129,6 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     final appBar = AppBar(
       title: Center(
         child: Text(
@@ -139,23 +141,21 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       actions: <Widget>[
-        IconButton(
-          icon: Icon(_showChart ? Icons.list : Icons.pie_chart),
-          onPressed: () {
-            setState(() {
-              _showChart = !_showChart;
-            });
-          } ,
-        ),
+        if (isLandscape)
+          IconButton(
+            icon: Icon(_showChart ? Icons.list : Icons.show_chart),
+            onPressed: () {
+              setState(() {
+                _showChart = !_showChart;
+              });
+            },
+          ),
         IconButton(
           icon: const Icon(Icons.add),
           onPressed: () => _openTransactionFormModal(context),
         ),
       ],
     );
-
-    bool isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
 
     final availableHeight = MediaQuery.of(context).size.height -
         appBar.preferredSize.height -
@@ -167,25 +167,25 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            if (isLandscape)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'Exibir Gráfico',
-                    style:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
-                  ),
-                  Switch(
-                    value: _showChart,
-                    onChanged: (value) {
-                      setState(() {
-                        _showChart = value;
-                      });
-                    },
-                  ),
-                ],
-              ),
+            // if (isLandscape)
+            //   Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: <Widget>[
+            //       const Text(
+            //         'Exibir Gráfico',
+            //         style:
+            //             TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+            //       ),
+            //       Switch(
+            //         value: _showChart,
+            //         onChanged: (value) {
+            //           setState(() {
+            //             _showChart = value;
+            //           });
+            //         },
+            //       ),
+            //     ],
+            //   ),
             if (_showChart || !isLandscape)
               Container(
                   height: availableHeight * (isLandscape ? 0.7 : 0.30),
