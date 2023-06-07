@@ -140,9 +140,17 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       actions: <Widget>[
         IconButton(
+          icon: Icon(_showChart ? Icons.list : Icons.pie_chart),
+          onPressed: () {
+            setState(() {
+              _showChart = !_showChart;
+            });
+          } ,
+        ),
+        IconButton(
           icon: const Icon(Icons.add),
           onPressed: () => _openTransactionFormModal(context),
-        )
+        ),
       ],
     );
 
@@ -154,34 +162,6 @@ class _MyHomePageState extends State<MyHomePage> {
         MediaQuery.of(context).padding.top;
 
     return Scaffold(
-      drawer: const Drawer(
-        backgroundColor: Colors.white,
-        child: Column(
-          children: [
-            DrawerHeader(child: Icon(Icons.favorite)),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('D A S H B O A R D'),
-            ),
-            ListTile(
-              leading: Icon(Icons.message),
-              title: Text('M E N S A G E N S'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('C O N F I G U R A Ç Õ E S'),
-            ),
-            ListTile(
-              leading: Icon(Icons.announcement),
-              title: Text('S O B R E'),
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('S A I R'),
-            ),
-          ],
-        ),
-      ),
       appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
